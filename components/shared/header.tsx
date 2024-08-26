@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "../icons/shopLogo";
+import Button from "./button";
 
 const Header = () => {
     return (
@@ -15,8 +16,7 @@ const Header = () => {
             <Link href={"/products"} className="mr-5 hover:text-gray-900">Products</Link>
             <Link href={"contact"} className="mr-5 hover:text-gray-900">Contact Us</Link>
           </nav>
-          
-          <button className=" text-white bg-[#9BF6FF] border-0 py-2 px-8 focus:outline-none hover:bg-[#84e4ed] rounded text-base">Button</button>
+          <Button text={"Sign Up"}/>
         </div>
       </header>
     );
