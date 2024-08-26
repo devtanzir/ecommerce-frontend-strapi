@@ -16,7 +16,7 @@ const Header = () => {
             <Link href={"contact"} className="mr-5 hover:text-gray-900">Contact Us</Link>
           </nav>
           
-          <button className=" text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">Button</button>
+          <button className=" text-white bg-[#9BF6FF] border-0 py-2 px-8 focus:outline-none hover:bg-[#84e4ed] rounded text-base">Button</button>
         </div>
       </header>
     );
