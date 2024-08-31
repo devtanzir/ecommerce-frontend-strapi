@@ -4,8 +4,10 @@ import { createId } from '@/utils/utils';
 import { Product } from '@/interfaces/products';
 import Link from 'next/link';
 
+
 const Products = async () => {
   const data = await getData({url: process.env.NEXT_GET_PRODUCTS ?? "http://localhost:8080/api/products?populate=*"});
+
 
     return (
         <section className="text-gray-600 body-font">

@@ -1,3 +1,5 @@
+import { ColorKey } from "./colors";
+
 export interface Product {
     id: number;
     attributes: {
@@ -9,7 +11,7 @@ export interface Product {
       description: string;
       category: string;
       size: string;
-      color: string;
+      color: ColorKey;
       price: number;
       availableQty: number;
       image: {
