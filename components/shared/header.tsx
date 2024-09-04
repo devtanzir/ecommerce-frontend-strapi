@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "../icons/shopLogo";
 import Button from "./button";
+import CartHeader from "./cart-header";
 
 const Header = () => {
     return (
@@ -14,7 +15,8 @@ const Header = () => {
             <Link href={"/"} className="mr-5 hover:text-gray-900">Home</Link>
             <Link href={"/about"} className="mr-5 hover:text-gray-900">About</Link>
             <Link href={"/products"} className="mr-5 hover:text-gray-900">Products</Link>
-            <Link href={"contact"} className="mr-5 hover:text-gray-900">Contact Us</Link>
+            <Link href={"/contact"} className="mr-5 hover:text-gray-900">Contact Us</Link>
+            <CartHeader/>
           </nav>
           <Button text={"Sign Up"}/>
         </div>
