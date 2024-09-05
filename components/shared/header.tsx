@@ -2,6 +2,8 @@ import Link from "next/link";
 import Logo from "../icons/shopLogo";
 import Button from "./button";
 import CartHeader from "./cart-header";
+import { NavItem } from "@/constants/header";
+import { createId } from "@/utils/utils";
 
 const Header = () => {
     return (
@@ -12,10 +14,11 @@ const Header = () => {
             <span className="ml-3 text-xl">ShopBD</span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Link href={"/"} className="mr-5 hover:text-gray-900">Home</Link>
-            <Link href={"/about"} className="mr-5 hover:text-gray-900">About</Link>
-            <Link href={"/products"} className="mr-5 hover:text-gray-900">Products</Link>
-            <Link href={"/contact"} className="mr-5 hover:text-gray-900">Contact Us</Link>
+            {
+              NavItem.map(item => (
+                <Link key={createId()} href={item.path} className="mr-5 hover:text-gray-900">{item.title}</Link>
+              ))
+            }
             <CartHeader/>
           </nav>
           <Button text={"Sign Up"}/>

@@ -1,8 +1,11 @@
+import Hero from "@/components/shared/hero";
+import Products from "./products/page";
 
 export default function Home() {
   return (
     <>
-    <h1>this is index page</h1>
+    <Hero/>
+    <Products/>
     </>
   );
 }

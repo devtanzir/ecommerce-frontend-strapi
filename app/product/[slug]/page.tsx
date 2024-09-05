@@ -1,15 +1,13 @@
 
-import Button from "@/components/shared/button";
+
 import { getData } from "@/hooks/getData";
 import { colors } from "@/interfaces/colors";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { FC } from "react";
+
 import AddToCart from "./addToCart";
 import Link from "next/link";
-interface SlugProps {
-  params: Params;
-} 
-const Slug: FC<SlugProps> = async ({ params }) => {
+
+const Slug = async ({ params } : {params: Params}) => {
   const { slug } = params;
 
   const data = await getData({

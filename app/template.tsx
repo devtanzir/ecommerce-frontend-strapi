@@ -1,16 +1,16 @@
 import Header from '@/components/shared/header';
-import  { FC } from 'react';
+import  { ReactNode } from 'react';
 import StoreProvider from './store-provider';
-interface ChildrenProps {
-    children: React.ReactNode;
-  }
-const Template:FC<ChildrenProps> = ({children}) => {
+import Footer from '@/components/shared/footer';
+
+const Template = ({children} : {children: ReactNode}) => {
 
     return (
         <>
         <StoreProvider>
             <Header />
             {children}
+            <Footer/>
         </StoreProvider>
         </>
     );
