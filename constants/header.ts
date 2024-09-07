@@ -1,17 +1,12 @@
-export const NavItem = [{
+import { createId } from "@/utils/utils";
+
+export const NavItem = [
+  {
+    id: createId(),
     title: "Home",
-    path: "/"
-},
-{
-    title: "About",
-    path: "/about"
-},
-{
-    title: "Products",
-    path: "/products"
-}
-,{
-    title: "Contact Us",
-    path: "/contact"
-}
-]
+    path: "/",
+  },
+  { id: createId(), title: "About", path: "/about" },
+  { id: createId(), title: "Products", path: "/products" },
+  { id: createId(), title: "Contact Us", path: "/contact" },
+];

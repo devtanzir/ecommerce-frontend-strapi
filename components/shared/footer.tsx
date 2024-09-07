@@ -19,7 +19,7 @@ const Footer = () => {
         <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 ">
           {
             NavItem.map(item => (
-                <li key={item.title}>
+                <li key={item.id}>
                   <Link href={item.path}  className="mr-4 hover:underline md:mr-6 ">
                     {item.title}
                   </Link>

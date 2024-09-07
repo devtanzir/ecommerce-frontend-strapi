@@ -1,7 +1,7 @@
 
 
 import { getData } from "@/hooks/getData";
-import { colors } from "@/interfaces/colors";
+import { ColorKey, colors } from "@/interfaces/colors";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import AddToCart from "./addToCart";
@@ -139,7 +139,7 @@ const Slug = async ({ params } : {params: Params}) => {
               <div className="flex">
                 <span className="mr-3">Color</span>
                 <button
-                  className={`border-2 border-gray-300 ml-1 ${colors[product.color]} rounded-full w-6 h-6 focus:outline-none`}
+                  className={`${colors[product.color as ColorKey]} border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none`}
                 ></button>
               </div>
               <div className="flex ml-6 items-center">
