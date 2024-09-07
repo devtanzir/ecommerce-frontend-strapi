@@ -1,14 +1,18 @@
-import Header from '@/components/shared/header';
+
 import  { ReactNode } from 'react';
 import StoreProvider from './store-provider';
 import Footer from '@/components/shared/footer';
+import Navbar from '@/components/shared/navbar';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Template = ({children} : {children: ReactNode}) => {
 
     return (
         <>
         <StoreProvider>
-            <Header />
+            <ToastContainer/>
+            <Navbar/>
             {children}
             <Footer/>
         </StoreProvider>

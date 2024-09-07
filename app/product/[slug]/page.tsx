@@ -151,7 +151,7 @@ const Slug = async ({ params } : {params: Params}) => {
                 {product.price} BDT
               </span>
               <div className="flex ml-auto gap-2">
-                <AddToCart slug={product.slug}/>
+                <AddToCart slug={product.slug} price={product.price} title={product.title}/>
                 <Link className="text-black bg-[#9BF6FF] border-0 py-2 px-8 focus:outline-none hover:bg-[#84e4ed] rounded text-base " href={"/checkout"}>Checkout</Link>
               </div>
 
