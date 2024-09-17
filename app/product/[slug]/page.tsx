@@ -4,7 +4,7 @@ import { getData } from "@/hooks/getData";
 import { ColorKey, colors } from "@/interfaces/colors";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-import AddToCart from "./addToCart";
+import AddToCart from "../../../components/shared/addToCart";
 import Link from "next/link";
 
 const Slug = async ({ params } : {params: Params}) => {
