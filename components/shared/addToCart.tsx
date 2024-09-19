@@ -9,10 +9,14 @@ const AddToCart = ({
   slug,
   price,
   title,
+  image,
+  availableQty
 }: {
   slug: string;
   price: number;
   title: string;
+  image: string;
+  availableQty: number;
 }) => {
   const dispatch = useAppDispatch();
   const handleCart = (item: CartItem) => {
@@ -30,8 +34,11 @@ const AddToCart = ({
           handleCart({
             id: createId(),
             slug,
+            image,
             title,
             price,
+            availableQty,
+            quantity: 1
           })
         }
       >

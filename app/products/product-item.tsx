@@ -7,6 +7,7 @@ import Link from 'next/link';
 import AddToCart from '../../components/shared/addToCart';
 import ViewProduct from './veiw-product';
 const ProductItem = ({product}: {product: Product}) => {
+
     return (
         <>
             <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm  ">
@@ -30,7 +31,7 @@ const ProductItem = ({product}: {product: Product}) => {
                     
                     <ViewProduct image={`${process.env.NEXT_ROOT_LINK}${product.attributes.image.data.attributes.formats.small.url}`}/>
                     
-                    <AddToCart price={product.attributes.price} slug={product.attributes.slug} title={product.attributes.title}/>
+                    <AddToCart image={`${process.env.NEXT_ROOT_LINK}${product.attributes.image.data.attributes.formats.small.url}`} price={product.attributes.price} slug={product.attributes.slug} title={product.attributes.title} availableQty={product.attributes.availableQty}/>
                   </div>
                 </div>
 

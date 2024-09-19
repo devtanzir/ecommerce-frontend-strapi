@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import Swal from 'sweetalert2'
 import { toast } from "react-toastify";
-import { CartItem, CartState } from "@/interfaces/cartSlice";
+import { CartItem, CartQty, CartState } from "@/interfaces/cartSlice";
 
 
 
@@ -47,10 +47,41 @@ export const cartSlice = createSlice({
                     pauseOnHover: true,
                     draggable: true,
                 })
+        },
+        addQty: (state, action: PayloadAction<CartQty>) => {
+            
+            const targetData = state.items.findIndex(item => item.slug === action.payload.slug)
+            if (state.items[targetData].availableQty > state.items[targetData].quantity) {
+                
+                const productPrice = action.payload.price / state.items[targetData].quantity 
+                state.items[targetData].price = state.items[targetData].price + productPrice
+                state.items[targetData].quantity = state.items[targetData].quantity + 1
+            return
+        }
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Out Of Stock!",
+            });
+            
+            return
+        },
+        removeQty: (state, action: PayloadAction<CartQty>) => {
+            
+            const targetData = state.items.findIndex(item => item.slug === action.payload.slug)
+           if (state.items[targetData].quantity > 1) {
+            const productPrice = action.payload.price / state.items[targetData].quantity 
+                state.items[targetData].price = state.items[targetData].price - productPrice
+            state.items[targetData].quantity = state.items[targetData].quantity - 1
+            
+        return   
+        }
+        
+            return
         }
     }
 })
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove, addQty, removeQty } = cartSlice.actions;
 
 export default cartSlice.reducer;

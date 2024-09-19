@@ -6,13 +6,23 @@ import CartIcon from "../icons/cart";
 import ChevronDown from "../icons/chevron-down";
 import { remove } from "@/lib/store/features/cart/cartSlice";
 import Delete from "../icons/delete";
+import Swal from "sweetalert2";
 
 const CartHeader = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   const { handleToggle, open } = useToggler();
   const dispatch = useAppDispatch();
   const handleDelete = (slug: string) => {
-    dispatch(remove(slug));
+    Swal.fire({
+      title: "Are you sure?",
+      showDenyButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `cancel`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(remove(slug));
+      }
+    });
   };
   return (
     <>
@@ -52,7 +62,7 @@ const CartHeader = () => {
 
                 <div className="flex items-center justify-end gap-6">
                   <p className="text-sm font-normal leading-none text-gray-500 ">
-                    Qty: 1
+                    Qty: {item.quantity}
                   </p>
 
                   <button
