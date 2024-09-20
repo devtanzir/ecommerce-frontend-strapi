@@ -1,11 +1,8 @@
 "use client"
-import { useAppSelector } from "@/lib/store/hooks";
+import useTotalPrice from "@/hooks/totalPrice";
 
 const TotalPrice = () => {
-    const cartItems = useAppSelector((state) => state.cart.items);
-   const totalPrice = cartItems.reduce((acc, cur ) => {
-        return acc + cur.price 
-    },0)
+const totalPrice = useTotalPrice()
     return (
         <>
               <dl className="flex items-center justify-between gap-4">
