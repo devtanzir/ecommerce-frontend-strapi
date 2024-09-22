@@ -1,9 +1,10 @@
+
 import useTotalPrice from "@/hooks/totalPrice";
 import { ChangeEvent, useState } from "react";
 
 const useCheckout = () => {
 
-    const totalPrice = useTotalPrice()
+  const totalPrice = useTotalPrice()
   const initialData = {
     username: "",
     email: "",
@@ -22,7 +23,9 @@ const useCheckout = () => {
     console.log(state);
     setState(initialData)
   };
-  return {totalPrice, handleSubmit, handleChange, state}
+ 
+
+  return {totalPrice, handleSubmit, handleChange, state, }
 };
 
 export default useCheckout;
