@@ -1,4 +1,4 @@
-import Star from '@/components/icons/star';
+import Star from '@/public/icons/star';
 import { colorInput, deliveryInput, weightInput } from '@/constants/filter';
 
 const AdvanceFilter = () => {

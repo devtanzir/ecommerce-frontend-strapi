@@ -1,10 +1,10 @@
 
 
-import { getData } from "@/hooks/getData";
+import { getData } from "@/lib/getData";
 import { ColorKey, colors } from "@/interfaces/colors";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-import AddToCart from "../../../components/shared/addToCart";
+import AddToCart from "@/components/shared/addToCart";
 import Link from "next/link";
 
 const Slug = async ({ params } : {params: Params}) => {
@@ -27,7 +27,7 @@ const Slug = async ({ params } : {params: Params}) => {
           <img
             alt="ecommerce"
             className="lg:w-1/2 w-[400px] lg:h-[400px] h-64 object-cover object-center rounded"
-            src={`${process.env.NEXT_ROOT_LINK}${productImage}`}
+            src={`${productImage}`}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -151,7 +151,7 @@ const Slug = async ({ params } : {params: Params}) => {
                 {product.price} BDT
               </span>
               <div className="flex ml-auto gap-2">
-                <AddToCart slug={product.slug} price={product.price} title={product.title}/>
+                {/* <AddToCart slug={product.slug} price={product.price} title={product.title}/> */}
                 <Link className="text-black bg-[#9BF6FF] border-0 py-2 px-8 focus:outline-none hover:bg-[#84e4ed] rounded text-base " href={"/checkout"}>Checkout</Link>
               </div>
 

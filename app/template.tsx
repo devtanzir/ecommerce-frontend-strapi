@@ -1,10 +1,10 @@
 
 import  { ReactNode } from 'react';
 import StoreProvider from './store-provider';
-import Footer from '@/components/shared/footer';
-import Navbar from '@/components/shared/navbar';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from './_components/header/navbar';
+import Footer from './_components/footer/footer';
 
 const Template = ({children} : {children: ReactNode}) => {
 

@@ -1,7 +1,7 @@
 "use client";
-import ChevronDown from "@/components/icons/chevron-down";
-import Close from "@/components/icons/close";
-import FilterIcon from "@/components/icons/filter";
+import ChevronDown from "@/public/icons/chevron-down";
+import Close from "@/public/icons/close";
+import FilterIcon from "@/public/icons/filter";
 import Button from "@/components/shared/button";
 import useToggler from "@/hooks/toggler";
 import BrandFilter from "./brand-filter";

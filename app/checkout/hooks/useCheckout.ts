@@ -1,8 +1,10 @@
 
 import useTotalPrice from "@/hooks/totalPrice";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 
 const useCheckout = () => {
+  const router = useRouter()
 
   const totalPrice = useTotalPrice()
   const initialData = {
@@ -21,6 +23,7 @@ const useCheckout = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(state);
+    router.push("/payment")
     setState(initialData)
   };
  

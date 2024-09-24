@@ -2,10 +2,10 @@
 import useToggler from "@/hooks/toggler";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import Link from "next/link";
-import CartIcon from "../icons/cart";
-import ChevronDown from "../icons/chevron-down";
+import CartIcon from "../../../public/icons/cart";
+import ChevronDown from "../../../public/icons/chevron-down";
 import { remove } from "@/lib/store/features/cart/cartSlice";
-import Delete from "../icons/delete";
+import Delete from "../../../public/icons/delete";
 import Swal from "sweetalert2";
 
 const CartHeader = () => {

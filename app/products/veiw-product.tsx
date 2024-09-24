@@ -1,6 +1,6 @@
 "use client";
-import Close from "@/components/icons/close";
-import Eye from "@/components/icons/eye";
+import Close from "@/public/icons/close";
+import Eye from "@/public/icons/eye";
 import useToggler from "@/hooks/toggler";
 
 const ViewProduct = ({image} : {image: string}) => {

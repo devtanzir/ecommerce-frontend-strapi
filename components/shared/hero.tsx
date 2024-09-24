@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from './button';
-import Disnap from '../icons/disnep';
-import Samsung from '../icons/samsung';
-import Nike from '../icons/nike';
-import Apple from '../icons/apple';
-import Lg from '../icons/lg';
-import Sony from '../icons/sony';
+import Disnap from '../../public/icons/disnep';
+import Samsung from '../../public/icons/samsung';
+import Nike from '../../public/icons/nike';
+import Apple from '../../public/icons/apple';
+import Lg from '../../public/icons/lg';
+import Sony from '../../public/icons/sony';
 
 const Hero = () => {
     return (

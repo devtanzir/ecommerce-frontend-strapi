@@ -1,14 +1,14 @@
 
-import { getData } from "@/hooks/getData";
+import { getData } from "@/lib/getData";
 import { Product } from '@/interfaces/products';
 import ProductItem from "./product-item";
-import { createId } from "@/utils/utils";
+import { createId } from "@/lib/utils/utils";
 import Filter from "./filter";
 import Sort from "./sort";
 
 
 const Products = async () => {
-  const {data} = await getData({url: process.env.NEXT_GET_PRODUCTS ?? "http://localhost:8080/api/products?populate=*"});
+  const {data} = await getData({url: process.env.NEXT_GET_PRODUCTS ?? ""});
   return (
     <>
       <section className="bg-gray-50 py-8 antialiased md:py-12">

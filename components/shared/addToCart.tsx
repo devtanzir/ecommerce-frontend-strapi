@@ -1,9 +1,9 @@
 "use client";
-import AddCart from "@/components/icons/add-cart";
+import AddCart from "@/public/icons/add-cart";
 import { CartItem } from "@/interfaces/cartSlice";
 import { add } from "@/lib/store/features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { createId } from "@/utils/utils";
+import { createId } from "@/lib/utils/utils";
 
 const AddToCart = ({
   slug,

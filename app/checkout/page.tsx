@@ -1,5 +1,5 @@
 "use client";
-import ChevronCircle from "@/components/icons/chevron-circle";
+import ChevronCircle from "@/public/icons/chevron-circle";
 import useCheckout from "./hooks/useCheckout";
 import Link from "next/link";
 
@@ -373,13 +373,12 @@ const Checkout = () => {
               </div>
 
               <div className="space-y-3">
-                <Link
-                href={"/payment"}
+                <button
                   type="submit"
                   className="flex w-full items-center justify-center rounded-lg bg-[#9BF6FF] px-5 py-2.5 text-sm text-black font-semibold hover:bg-[#84E4ED] focus:outline-none focus:ring-4  focus:ring-blue-300"
                 >
                   Proceed to Payment
-                </Link>
+                </button>
 
                 <p className="text-sm font-normal text-gray-500 ">
                   One or more items in your cart require an account.{" "}

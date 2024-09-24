@@ -1,7 +1,7 @@
-import Eye from '@/components/icons/eye';
-import Mony from '@/components/icons/mony';
-import Star from '@/components/icons/star';
-import Truck from '@/components/icons/truck';
+import Eye from '@/public/icons/eye';
+import Mony from '@/public/icons/mony';
+import Star from '@/public/icons/star';
+import Truck from '@/public/icons/truck';
 import { Product } from '@/interfaces/products';
 import Link from 'next/link';
 import AddToCart from '../../components/shared/addToCart';
@@ -15,7 +15,7 @@ const ProductItem = ({product}: {product: Product}) => {
                 <Link href={`/product/${product.attributes.slug}`}>
                   <img
                     className="mx-auto h-full "
-                    src={`${process.env.NEXT_ROOT_LINK}${product.attributes.image.data.attributes.formats.small.url}`}
+                    src={`${product.attributes.image.data.attributes.formats.small.url}`}
                     alt="product-image"
                   />
                 </Link>
@@ -29,9 +29,9 @@ const ProductItem = ({product}: {product: Product}) => {
 
                   <div className="flex items-center justify-end gap-1">
                     
-                    <ViewProduct image={`${process.env.NEXT_ROOT_LINK}${product.attributes.image.data.attributes.formats.small.url}`}/>
+                    <ViewProduct image={`${product.attributes.image.data.attributes.formats.small.url}`}/>
                     
-                    <AddToCart image={`${process.env.NEXT_ROOT_LINK}${product.attributes.image.data.attributes.formats.small.url}`} price={product.attributes.price} slug={product.attributes.slug} title={product.attributes.title} availableQty={product.attributes.availableQty}/>
+                    <AddToCart image={`${product.attributes.image.data.attributes.formats.small.url}`} price={product.attributes.price} slug={product.attributes.slug} title={product.attributes.title} availableQty={product.attributes.availableQty}/>
                   </div>
                 </div>
 

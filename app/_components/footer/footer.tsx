@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "../icons/shopLogo";
+import Logo from "../../../public/icons/shopLogo";
 import { NavItem } from "@/constants/header";
 
 const Footer = () => {

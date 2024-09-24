@@ -1,7 +1,7 @@
 "use client"
 import useToggler from "@/hooks/toggler";
-import ChevronDown from "../icons/chevron-down";
-import User from "../icons/user";
+import ChevronDown from "../../public/icons/chevron-down";
+import User from "../../public/icons/user";
 import { userProfileData } from "@/constants/user-profile";
 import Link from "next/link";
 

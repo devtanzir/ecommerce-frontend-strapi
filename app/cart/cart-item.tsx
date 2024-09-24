@@ -1,7 +1,7 @@
 "use client"
-import Close from "@/components/icons/close";
-import Minus from "@/components/icons/minus";
-import Plus from "@/components/icons/plus";
+import Close from "@/public/icons/close";
+import Minus from "@/public/icons/minus";
+import Plus from "@/public/icons/plus";
 import { remove, addQty, removeQty } from "@/lib/store/features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import Link from "next/link";

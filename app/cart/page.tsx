@@ -2,7 +2,7 @@ import Link from "next/link";
 import CartItem from "./cart-item";
 import TotalPrice from "./total-price";
 import Button from "@/components/shared/button";
-import ArrowWrite from "@/components/icons/write-arrow";
+import ArrowWrite from "@/public/icons/write-arrow";
 
 const Cart = () => {
   return (

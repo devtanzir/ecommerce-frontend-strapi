@@ -1,6 +1,6 @@
 "use client"
-import ChevronDown from "@/components/icons/chevron-down";
-import SortIcon from "@/components/icons/sort-icon";
+import ChevronDown from "@/public/icons/chevron-down";
+import SortIcon from "@/public/icons/sort-icon";
 import { sortItem } from "@/constants/filter";
 import useToggler from "@/hooks/toggler";
 import Link from "next/link";

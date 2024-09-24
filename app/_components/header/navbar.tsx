@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Logo from "../icons/shopLogo";
+import Logo from "../../../public/icons/shopLogo";
 import { NavItem } from "@/constants/header";
 import CartHeader from "./cart-header";
-import UserProfile from "./userProfile";
+import UserProfile from "../../../components/shared/userProfile";
 import MobileMenu from "./mobile-menu";
 
 const Navbar = () => {

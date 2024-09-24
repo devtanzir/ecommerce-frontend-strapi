@@ -1,5 +1,4 @@
 import axios from "axios";
-import { FC } from "react";
 
 interface urlProps {
     url: string;

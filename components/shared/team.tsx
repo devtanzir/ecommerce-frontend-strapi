@@ -1,8 +1,8 @@
 import { TeamSection } from "@/constants/team";
-import Facebook from "../icons/facebook";
-import Twitter from "../icons/twitter";
-import Github from "../icons/github";
-import Dribble from "../icons/dribble";
+import Facebook from "../../public/icons/facebook";
+import Twitter from "../../public/icons/twitter";
+import Github from "../../public/icons/github";
+import Dribble from "../../public/icons/dribble";
 
 const Team = () => {
     return (
