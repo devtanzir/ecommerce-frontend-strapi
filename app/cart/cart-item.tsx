@@ -71,14 +71,14 @@ const CartItem = () => {
                       {/* INPUT START */}
                       <div className="text-end md:order-4 md:w-32">
                         <p className="text-base font-bold text-gray-900 ">
-                          {item.price.toLocaleString()} BDT
+                          ${item.price.toLocaleString()}
                         </p>
                       </div>
                     </div>
 
                     <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                       <Link
-                        href={`/product/${item.slug}`}
+                        href={`/products/${item.slug}`}
                         className="text-base font-medium text-gray-900 hover:underline "
                       >
                         {item.title}

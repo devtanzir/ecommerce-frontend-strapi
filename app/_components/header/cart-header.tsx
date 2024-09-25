@@ -56,7 +56,7 @@ const CartHeader = () => {
                     {item.title}
                   </Link>
                   <p className="mt-0.5 truncate text-sm font-normal text-gray-500 ">
-                    {item.price} BDT
+                    ${item.price}
                   </p>
                 </div>
 

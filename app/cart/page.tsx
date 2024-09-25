@@ -3,10 +3,13 @@ import CartItem from "./cart-item";
 import TotalPrice from "./total-price";
 import Button from "@/components/shared/button";
 import ArrowWrite from "@/public/icons/write-arrow";
+import Breadcrumbs from "@/components/shared/breadcrumbs";
+import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const Cart = () => {
   return (
     <>
+<BreadCrumbComponents />
       <section className="bg-white py-8 antialiased  md:py-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl">

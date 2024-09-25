@@ -10,7 +10,7 @@ const totalPrice = useTotalPrice()
                         Total price
                       </dt>
                       <dd className="text-base font-medium text-gray-900 ">
-                        {totalPrice.toLocaleString()} BDT
+                        ${totalPrice.toLocaleString()}
                       </dd>
                     </dl>
         </>

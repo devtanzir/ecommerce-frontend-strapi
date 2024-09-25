@@ -1,11 +1,14 @@
 import Hero from "@/components/shared/hero";
-import Products from "./products/page";
+import ProductList from "./products/product-list";
 
 export default function Home() {
   return (
     <>
     <Hero/>
-    <Products/>
+    <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <ProductList/>
+    </div>
+    
     </>
   );
 }

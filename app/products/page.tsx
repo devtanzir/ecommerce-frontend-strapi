@@ -1,16 +1,14 @@
 
-import { getData } from "@/lib/getData";
-import { Product } from '@/interfaces/products';
-import ProductItem from "./product-item";
-import { createId } from "@/lib/utils/utils";
 import Filter from "./filter";
 import Sort from "./sort";
+import ProductList from "./product-list";
+import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 
 const Products = async () => {
-  const {data} = await getData({url: process.env.NEXT_GET_PRODUCTS ?? ""});
   return (
     <>
+      <BreadCrumbComponents/>
       <section className="bg-gray-50 py-8 antialiased md:py-12">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           {/* <!-- Heading & Filters --> */}
@@ -21,23 +19,7 @@ const Products = async () => {
               <Sort/>
             </div>
           </div>
-          <div className="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-            {
-              data.map((product: Product) => (
-                <ProductItem key={createId()} product={product}/>
-              ))
-            }
-          </div>
-          {
-            data.length > 8 && <div className="w-full text-center">
-            <button
-              type="button"
-              className="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 "
-            >
-              Show more
-            </button>
-          </div>
-          }    
+          <ProductList/>
         </div>
       </section>
     </>

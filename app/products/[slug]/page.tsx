@@ -6,6 +6,8 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import AddToCart from "@/components/shared/addToCart";
 import Link from "next/link";
+import Breadcrumbs from "@/components/shared/breadcrumbs";
+import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const Slug = async ({ params } : {params: Params}) => {
   const { slug } = params;
@@ -21,6 +23,8 @@ const Slug = async ({ params } : {params: Params}) => {
   const productImage = product.image.data.attributes.formats.small.url;
 
   return (
+    <>
+<BreadCrumbComponents/>
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -171,7 +175,7 @@ const Slug = async ({ params } : {params: Params}) => {
           </div>
         </div>
       </div>
-    </section>
+    </section></>
   );
 };
 

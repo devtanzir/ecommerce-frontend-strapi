@@ -12,7 +12,7 @@ const ProductItem = ({product}: {product: Product}) => {
         <>
             <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm  ">
               <div className="h-56 w-full">
-                <Link href={`/product/${product.attributes.slug}`}>
+                <Link href={`/products/${product.attributes.slug}`}>
                   <img
                     className="mx-auto h-full "
                     src={`${product.attributes.image.data.attributes.formats.small.url}`}
@@ -36,7 +36,7 @@ const ProductItem = ({product}: {product: Product}) => {
                 </div>
 
                 <Link
-                  href={`/product/${product.attributes.slug}`}
+                  href={`/products/${product.attributes.slug}`}
                   className="text-lg font-semibold leading-tight text-gray-900 hover:underline "
                 >
                   {product.attributes.title}
@@ -73,7 +73,7 @@ const ProductItem = ({product}: {product: Product}) => {
 
                 <div className="mt-4 flex items-center justify-between gap-4">
                   <p className="text-xl font-extrabold leading-tight text-gray-900 ">
-                  {product.attributes.price} BDT
+                  ${product.attributes.price}
                   </p>
                 </div>
               </div>

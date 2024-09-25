@@ -2,13 +2,18 @@ import Image from "next/image";
 import Office1 from "@/public/office-long-1.png"
 import Office2 from "@/public/office-long-2.png"
 import Team from "@/components/shared/team";
+import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const About = () => {
   return (
     <>
       <section className="bg-white">
+      <BreadCrumbComponents/>
+        
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+
           <div className="font-light text-gray-500 sm:text-lg">
+            
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
               We didn't reinvent the wheel
             </h2>

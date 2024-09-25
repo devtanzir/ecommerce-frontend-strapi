@@ -1,40 +1,21 @@
 "use client";
 import ChevronCircle from "@/public/icons/chevron-circle";
 import useCheckout from "./hooks/useCheckout";
-import Link from "next/link";
+import Breadcrumbs from "@/components/shared/breadcrumbs";
+import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const Checkout = () => {
   const { handleChange, handleSubmit, totalPrice, state } = useCheckout();
 
   return (
     <>
+<BreadCrumbComponents/>
       <section className="bg-white py-8 antialiased md:py-16">
         <form
           onSubmit={handleSubmit}
           action="#"
           className="mx-auto max-w-screen-xl px-4 2xl:px-0"
         >
-          <ol className="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500  sm:text-base">
-            <li className="after:border-1 flex items-center text-black font-bold after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
-              <span className="flex items-center after:mx-2 after:text-gray-200 after:content-['/']  sm:after:hidden">
-                <ChevronCircle className="me-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Cart
-              </span>
-            </li>
-
-            <li className="after:border-1 flex items-center text-black font-bold after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200   sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
-              <span className="flex items-center after:mx-2 after:text-gray-200 after:content-['/']  sm:after:hidden">
-                <ChevronCircle className="me-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Checkout
-              </span>
-            </li>
-
-            <li className="flex shrink-0 items-center">
-              <ChevronCircle className="me-2 h-4 w-4 sm:h-5 sm:w-5" />
-              Order summary
-            </li>
-          </ol>
-
           <div className="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
             <div className="min-w-0 flex-1 space-y-8">
               <div className="space-y-4">
@@ -336,7 +317,7 @@ const Checkout = () => {
                       Subtotal
                     </dt>
                     <dd className="text-base font-medium text-gray-900 ">
-                      {totalPrice.toLocaleString()} BDT
+                      ${totalPrice.toLocaleString()}
                     </dd>
                   </dl>
 
@@ -366,7 +347,7 @@ const Checkout = () => {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      {totalPrice.toLocaleString()} BDT
+                      ${totalPrice.toLocaleString()}
                     </dd>
                   </dl>
                 </div>
