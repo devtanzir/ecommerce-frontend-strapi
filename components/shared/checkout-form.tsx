@@ -32,6 +32,7 @@ const CheckoutForm = () => {
             handleError(submitError);
             return;
         }
+        sendEmail()
 
         try {
             // Fetch the clientSecret from your server
@@ -70,6 +71,12 @@ const CheckoutForm = () => {
             handleError(error);
         }
     };
+
+    const sendEmail = async () => {
+        const res = await fetch("api/send",{
+            method: "POST"
+        })
+    }
   
     return (
         <>

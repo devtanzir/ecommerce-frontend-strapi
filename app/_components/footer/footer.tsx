@@ -1,9 +1,12 @@
+"use client"
 import Link from "next/link";
 import Logo from "../../../public/icons/shopLogo";
 import { NavItem } from "@/constants/header";
+import useCheckAuth from "@/hooks/check-auth";
 
 const Footer = () => {
-  return (
+  const login =  useCheckAuth()
+  return !login &&  (
     <footer className="p-4 bg-white md:p-8 lg:p-10 border-t border-slate-400">
       <div className="mx-auto max-w-screen-xl text-center">
         <Link
