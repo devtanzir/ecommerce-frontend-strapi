@@ -7,7 +7,7 @@ const useCheckAuth = () => {
 
 
     useEffect(() => {
-     setIsLogin(window.location.href.toString().includes("sign-in" || "sign-up"))
+     setIsLogin(/sign-up|sign-in/.test(window.location.href))
     },[isLogin])
 
     return isLogin;

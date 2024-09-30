@@ -1,9 +1,9 @@
 "use client"
+import "./header.css"
 import Link from "next/link";
 import Logo from "../../../public/icons/shopLogo";
 import { NavItem } from "@/constants/header";
 import CartHeader from "./cart-header";
-import UserProfile from "../../../components/shared/userProfile";
 import MobileMenu from "./mobile-menu";
 import { UserButton, useUser } from "@clerk/nextjs";
 import useCheckAuth from "@/hooks/check-auth";
@@ -11,6 +11,7 @@ import useCheckAuth from "@/hooks/check-auth";
 const Navbar = () => {
   const {user} = useUser()
  const login =  useCheckAuth()
+  
     return !login &&  (
         <>
          <nav className="bg-white  antialiased">
@@ -38,7 +39,6 @@ const Navbar = () => {
 
       <div className="flex items-center lg:space-x-2 gap-2">
         <CartHeader/>
-        {/* <UserProfile/> */}
         {user ? <UserButton/> : <Link href={"/sign-in"}>Log In</Link>}
         
 

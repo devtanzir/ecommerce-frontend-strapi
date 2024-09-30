@@ -16,7 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider  appearance={{
+      layout: {
+        socialButtonsPlacement: 'bottom',
+        socialButtonsVariant: 'iconButton',
+        logoImageUrl: "https://cdn2.iconfinder.com/data/icons/shopping-and-ecommerce-40/512/19_E-Commerce_Optimization-512.png"
+      }
+    }}>
     <html lang="en">
       <body className={inter.className}>
         {children}
