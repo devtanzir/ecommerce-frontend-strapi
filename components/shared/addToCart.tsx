@@ -10,13 +10,17 @@ const AddToCart = ({
   price,
   title,
   image,
-  availableQty
+  availableQty,
+  width,
+  height,
 }: {
   slug: string;
   price: number;
   title: string;
   image: string;
   availableQty: number;
+  width: number;
+  height: number;  // Adjust size as needed to fit your design requirements. For example, h-7 w-7 for a 7x7 pixel icon.
 }) => {
   const dispatch = useAppDispatch();
   const handleCart = (item: CartItem) => {
@@ -38,7 +42,9 @@ const AddToCart = ({
             title,
             price,
             availableQty,
-            quantity: 1
+            quantity: 1,
+            width,
+            height
           })
         }
       >
