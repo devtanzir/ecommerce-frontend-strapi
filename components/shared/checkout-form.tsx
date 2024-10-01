@@ -2,6 +2,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from "./button";
 import { FormEvent, useState } from "react";
 import useTotalPrice from "@/hooks/totalPrice";
+import { sendEmail } from "@/lib/sendEmail";
 
 
 const CheckoutForm = () => {
@@ -72,11 +73,7 @@ const CheckoutForm = () => {
         }
     };
 
-    const sendEmail = async () => {
-        const res = await fetch("api/send",{
-            method: "POST"
-        })
-    }
+
   
     return (
         <>

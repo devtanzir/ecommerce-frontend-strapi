@@ -1,27 +1,6 @@
-
-// import { configureStore } from "@reduxjs/toolkit";
-// import cartReducer from "./features/cart/cartSlice";
-
-// export const createStore = () => {
-//     return configureStore({
-//     reducer: {
-//         cart: cartReducer,
-//     },
-// })
-// }
-
-// export type AppStore = ReturnType<typeof createStore>
-
-// export type RootState = ReturnType<AppStore['getState']>
-
-// export type AppDispatch = AppStore['dispatch']
-
-// ?----------------------------------------------------------------
-
-// store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import { persistReducer, persistStore } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { combineReducers } from 'redux';
 import cartReducer from './features/cart/cartSlice';
 
@@ -41,6 +20,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const createStore = () => {
     const store = configureStore({
         reducer: persistedReducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+              serializableCheck: {
+                // Ignore these redux-persist action types
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+              },
+            }),
     });
 
     const persistor = persistStore(store);

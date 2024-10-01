@@ -1,15 +1,14 @@
 "use client";
-import ChevronCircle from "@/public/icons/chevron-circle";
+import { getDayAfterOneWeek } from "@/lib/utils/utils";
 import useCheckout from "./hooks/useCheckout";
-import Breadcrumbs from "@/components/shared/breadcrumbs";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const Checkout = () => {
-  const { handleChange, handleSubmit, totalPrice, state } = useCheckout();
+  const { handleChange, handleSubmit, totalPrice, state,shipping } = useCheckout();
 
   return (
     <>
-<BreadCrumbComponents/>
+      <BreadCrumbComponents />
       <section className="bg-white py-8 antialiased md:py-16">
         <form
           onSubmit={handleSubmit}
@@ -172,37 +171,6 @@ const Checkout = () => {
                       </div>
                     </div>
                   </div>
-
-                  <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4  ">
-                    <div className="flex items-start">
-                      <div className="flex h-5 items-center">
-                        <input
-                          id="paypal-2"
-                          type="radio"
-                          name="paymentMethod"
-                          value="paypal"
-                          onChange={handleChange}
-                          className="h-4 w-4 border-gray-300 bg-white     "
-                        />
-                      </div>
-
-                      <div className="ms-4 text-sm">
-                        <label
-                          htmlFor="paypal-2"
-                          className="font-medium leading-none text-gray-900 "
-                        >
-                          {" "}
-                          Paypal account{" "}
-                        </label>
-                        <p
-                          id="paypal-text"
-                          className="mt-1 text-xs font-normal text-gray-500 "
-                        >
-                          Connect to your account
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -269,7 +237,7 @@ const Checkout = () => {
                           id="fedex-text"
                           className="mt-1 text-xs font-normal text-gray-500 "
                         >
-                          Get it by Friday, 13 Dec 2023
+                        Get it by {getDayAfterOneWeek()}
                         </p>
                       </div>
                     </div>
@@ -330,16 +298,16 @@ const Checkout = () => {
 
                   <dl className="flex items-center justify-between gap-4 py-3">
                     <dt className="text-base font-normal text-gray-500 ">
-                      Store Pickup
+                      Shipping
                     </dt>
-                    <dd className="text-base font-medium text-gray-900 ">0</dd>
+                    <dd className="text-base font-medium text-gray-900 ">${shipping}</dd>
                   </dl>
 
                   <dl className="flex items-center justify-between gap-4 py-3">
                     <dt className="text-base font-normal text-gray-500 ">
                       Tax
                     </dt>
-                    <dd className="text-base font-medium text-gray-900 ">0</dd>
+                    <dd className="text-base font-medium text-gray-900 ">${((totalPrice + (totalPrice * 0.05)) - totalPrice).toFixed(2)}</dd>
                   </dl>
 
                   <dl className="flex items-center justify-between gap-4 py-3">
@@ -347,7 +315,7 @@ const Checkout = () => {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      ${totalPrice.toLocaleString()}
+                      ${(totalPrice+shipping+(totalPrice * 0.05)).toLocaleString()}
                     </dd>
                   </dl>
                 </div>
@@ -360,18 +328,6 @@ const Checkout = () => {
                 >
                   Proceed to Payment
                 </button>
-
-                <p className="text-sm font-normal text-gray-500 ">
-                  One or more items in your cart require an account.{" "}
-                  <a
-                    href="#"
-                    title=""
-                    className="font-medium text-blue-700 underline hover:no-underline "
-                  >
-                    Sign in or create an account now.
-                  </a>
-                  .
-                </p>
               </div>
             </div>
           </div>

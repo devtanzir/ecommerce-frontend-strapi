@@ -19,3 +19,22 @@ export const createId = () => {
     return timestamp + machineId + processId + counter;
   };
   
+
+export const getDayAfterOneWeek = () => {
+  const today = new Date();
+  // Add 7 days to the current date
+  today.setDate(today.getDate() + 7);
+
+  // Array of day names and month names
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  // Get day, date, month, and year
+  const dayName = days[today.getDay()];
+  const date = today.getDate();
+  const month = months[today.getMonth()];
+  const year = today.getFullYear();
+
+  // Return formatted date string
+  return `${dayName}, ${date} ${month} ${year}`;
+  }
