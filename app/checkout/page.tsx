@@ -3,8 +3,15 @@ import { getDayAfterOneWeek } from "@/lib/utils/utils";
 import useCheckout from "./hooks/useCheckout";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
+
+
 const Checkout = () => {
-  const { handleChange, handleSubmit, totalPrice, state,shipping } = useCheckout();
+  const { handleChange, handleSubmit, totalPrice, state,shipping,cost } = useCheckout();
+
+  if (!cost) {
+    return
+  }
+
 
   return (
     <>
@@ -307,7 +314,7 @@ const Checkout = () => {
                     <dt className="text-base font-normal text-gray-500 ">
                       Tax
                     </dt>
-                    <dd className="text-base font-medium text-gray-900 ">${((totalPrice + (totalPrice * 0.05)) - totalPrice).toFixed(2)}</dd>
+                    <dd className="text-base font-medium text-gray-900 ">${(cost - totalPrice).toFixed(2)}</dd>
                   </dl>
 
                   <dl className="flex items-center justify-between gap-4 py-3">
@@ -315,7 +322,7 @@ const Checkout = () => {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      ${(totalPrice+shipping+(totalPrice * 0.05)).toLocaleString()}
+                      ${cost.toLocaleString()}
                     </dd>
                   </dl>
                 </div>

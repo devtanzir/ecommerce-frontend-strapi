@@ -3,6 +3,8 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { combineReducers } from 'redux';
 import cartReducer from './features/cart/cartSlice';
+import checkoutReducer from "./features/cost/costSlice"
+import orderReducer from './features/order/orderSlice';
 
 const persistConfig = {
     key: 'root',
@@ -12,6 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     cart: cartReducer,
+    checkout: checkoutReducer,
+    order: orderReducer
     // other reducers...
 });
 

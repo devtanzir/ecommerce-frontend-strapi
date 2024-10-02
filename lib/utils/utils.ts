@@ -38,3 +38,9 @@ export const getDayAfterOneWeek = () => {
   // Return formatted date string
   return `${dayName}, ${date} ${month} ${year}`;
   }
+
+export const generateOrderId = () => {
+    const timestamp = Date.now(); // Get current timestamp
+    const randomNum = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit number
+    return `ORD-${timestamp}-${randomNum}`;
+  };

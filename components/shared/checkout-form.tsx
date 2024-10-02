@@ -2,7 +2,7 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from "./button";
 import { FormEvent, useState } from "react";
 import useTotalPrice from "@/hooks/totalPrice";
-import { sendEmail } from "@/lib/sendEmail";
+
 
 
 const CheckoutForm = () => {
@@ -33,7 +33,7 @@ const CheckoutForm = () => {
             handleError(submitError);
             return;
         }
-        sendEmail()
+
 
         try {
             // Fetch the clientSecret from your server

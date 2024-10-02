@@ -1,7 +1,11 @@
 import Stripe from "stripe";
 
 
-const stripe = new Stripe("sk_test_51Q1W9dBSlssWtzSdO5ggousKEe7MZJl6NLQUDr3m4PV0DG628qn489RCyhhEpT0gO2xp5Wd6MnD75LzsbaeIR17t00qycMI2WD", {typescript:true, apiVersion: "2024-06-20"})
+const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY||"", {
+  typescript: true,
+  apiVersion: "2024-06-20",
+})
+
 
 export async function POST(request:any){
     try {
