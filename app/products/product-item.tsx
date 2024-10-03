@@ -35,6 +35,7 @@ const ProductItem = ({ product }: { product: Product }) => {
               <AddToCart
                 image={`${productImage?.url}`}
                 price={product.attributes.price}
+                strapiId={product.id}
                 slug={product.attributes.slug}
                 title={product.attributes.title}
                 availableQty={product.attributes.availableQty}

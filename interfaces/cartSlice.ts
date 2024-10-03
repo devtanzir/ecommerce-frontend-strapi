@@ -1,6 +1,7 @@
 export interface CartItem {
     id: string;
     image: string;
+    strapiId: number;
     title: string;
     slug: string;
     price: number;

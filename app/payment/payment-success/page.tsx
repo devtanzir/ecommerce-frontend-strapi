@@ -1,15 +1,45 @@
 "use client";
+import { postData } from "@/lib/postData";
 import { clearCart } from "@/lib/store/features/cart/cartSlice";
+import { resetOrder } from "@/lib/store/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import Link from "next/link";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const PaymentSuccess = () => {
   const order = useAppSelector((state) => state.order);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(clearCart());
-  }, []);
+
+  const submitOrder = async () => {
+    if (!order.username || order.products.length == 0) {
+      console.error("Order is empty or undefined");
+      return;
+    }
+
+    if (!process.env.NEXT_PUBLIC_POST_ORDER) {
+      console.error("NEXT_PUBLIC_POST_ORDER environment variable is not defined.");
+      return;
+    }
+
+    try {
+      const response = await postData({ url: process.env.NEXT_PUBLIC_POST_ORDER, postData: order });
+      toast.success("Order Successful!",{
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    })
+
+      dispatch(resetOrder());
+      dispatch(clearCart());
+    } catch (error) {
+      console.error("Error posting order:", error);
+    }
+  };
+
+  submitOrder();
   return (
     <>
       <section className="bg-white py-8 antialiased  md:py-16">

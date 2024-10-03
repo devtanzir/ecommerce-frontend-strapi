@@ -29,6 +29,7 @@ const useCheckout = () => {
   const [cost, setCost] = useState<number>();
   const cartItems = useAppSelector((state) => state.cart.items);
 
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
@@ -63,10 +64,16 @@ const useCheckout = () => {
 
   const setOrderToDB = () => {
     const orderData = {
-      user: user?.fullName,
+      username: user?.fullName,
       email: user?.primaryEmailAddress?.emailAddress,
-      totalCost: cost,
-      products: cartItems,
+      amount: cost,
+      products: cartItems.map(item => {
+        return{
+         name: item.title,
+         price: item.price,
+         quantity: item.quantity
+        }
+      }),
       deliveryDetails: {
         customerName: state.username,
         customerEmail: state.email,

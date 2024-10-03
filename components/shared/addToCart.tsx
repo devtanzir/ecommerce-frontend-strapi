@@ -8,6 +8,7 @@ import { createId } from "@/lib/utils/utils";
 const AddToCart = ({
   slug,
   price,
+  strapiId,
   title,
   image,
   availableQty,
@@ -16,6 +17,7 @@ const AddToCart = ({
 }: {
   slug: string;
   price: number;
+  strapiId: number;  // Replace with your strapi id field name
   title: string;
   image: string;
   availableQty: number;
@@ -37,6 +39,7 @@ const AddToCart = ({
         onClick={() =>
           handleCart({
             id: createId(),
+            strapiId,
             slug,
             image,
             title,

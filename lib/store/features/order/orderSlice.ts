@@ -4,9 +4,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
 interface OrderState {
-  user: string | null
+  username: string | null
   email: string | null;
-  totalCost: number;
+  amount: number;
   products: any[]; 
   deliveryDetails: {
     customerName: string | null;
@@ -22,9 +22,9 @@ interface OrderState {
 
 // Initial state of the order
 const initialState: OrderState = {
-    user: '',
+    username: '',
     email: '',
-    totalCost: 0,
+    amount: 0,
     products: [],
     deliveryDetails: {
       customerName: "",
