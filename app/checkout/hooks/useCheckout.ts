@@ -5,7 +5,7 @@ import {
   updateTotalCost,
   updateUserInfo,
 } from "@/lib/store/features/cost/costSlice";
-import { setOrder } from "@/lib/store/features/order/orderSlice";
+import {  setOrder } from "@/lib/store/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { generateOrderId } from "@/lib/utils/utils";
 import { useUser } from "@clerk/nextjs";
@@ -17,6 +17,7 @@ const useCheckout = () => {
   const totalPrice = useTotalPrice();
   const dispatch = useAppDispatch();
   const { user } = useUser();
+  const cartItems = useAppSelector((state) => state.cart.items);
   const data: any = {
     "pay-on-delivery": 15,
     "credit-card": 0,
@@ -27,13 +28,13 @@ const useCheckout = () => {
   const [state, setState] = useState({ ...initialData });
   const [shipping, setShipping] = useState(15);
   const [cost, setCost] = useState<number>();
-  const cartItems = useAppSelector((state) => state.cart.items);
 
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
+
 
   useEffect(() => {
     const paymentMethodValue = data[state.paymentMethod] || 0;
@@ -67,12 +68,12 @@ const useCheckout = () => {
       username: user?.fullName,
       email: user?.primaryEmailAddress?.emailAddress,
       amount: cost,
-      products: cartItems.map(item => {
-        return{
-         name: item.title,
-         price: item.price,
-         quantity: item.quantity
-        }
+      products: cartItems.map((item) => {
+        return {
+          name: item.title,
+          price: item.price,
+          quantity: item.quantity,
+        };
       }),
       deliveryDetails: {
         customerName: state.username,

@@ -1,29 +1,15 @@
 "use client";
 import useToggler from "@/hooks/toggler";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import Link from "next/link";
 import CartIcon from "../../../public/icons/cart";
 import ChevronDown from "../../../public/icons/chevron-down";
-import { remove } from "@/lib/store/features/cart/cartSlice";
 import Delete from "../../../public/icons/delete";
-import Swal from "sweetalert2";
+import useCart from "@/hooks/useCart";
 
 const CartHeader = () => {
-  const cartItems = useAppSelector((state) => state.cart.items);
   const { handleToggle, open } = useToggler();
-  const dispatch = useAppDispatch();
-  const handleDelete = (slug: string) => {
-    Swal.fire({
-      title: "Are you sure?",
-      showDenyButton: true,
-      confirmButtonText: "Delete",
-      denyButtonText: `cancel`
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(remove(slug));
-      }
-    });
-  };
+  const {cartItems,handleDelete} = useCart()
+
   return (
     <>
       <div className="relative">

@@ -1,5 +1,4 @@
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
-import Breadcrumbs from "@/components/shared/breadcrumbs";
 import Button from "@/components/shared/button";
 
 const Contact = () => {

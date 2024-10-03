@@ -2,26 +2,12 @@
 import Close from "@/public/icons/close";
 import Minus from "@/public/icons/minus";
 import Plus from "@/public/icons/plus";
-import { remove, addQty, removeQty } from "@/lib/store/features/cart/cartSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { addQty, removeQty } from "@/lib/store/features/cart/cartSlice";
 import Link from "next/link";
-import Swal from "sweetalert2";
+import useCart from "@/hooks/useCart";
 
 const CartItem = () => {
-  const cartItems = useAppSelector((state) => state.cart.items);
-  const dispatch = useAppDispatch();
-  const handleDelete = (slug: string) => {
-    Swal.fire({
-      title: "Are you sure?",
-      showDenyButton: true,
-      confirmButtonText: "Delete",
-      denyButtonText: `cancel`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(remove(slug));
-      }
-    });
-  };
+  const {cartItems,handleDelete, dispatch} = useCart()
   return (
     <>
       {cartItems?.map((item) => (

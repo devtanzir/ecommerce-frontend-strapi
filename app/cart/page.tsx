@@ -3,7 +3,6 @@ import CartItem from "./cart-item";
 import TotalPrice from "./total-price";
 import Button from "@/components/shared/button";
 import ArrowWrite from "@/public/icons/write-arrow";
-import Breadcrumbs from "@/components/shared/breadcrumbs";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
 const Cart = () => {
@@ -38,7 +37,6 @@ const Cart = () => {
 
                 <Link
                   href="/checkout"
-                  //className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
                 >
                   <Button text="Proceed to Checkout" className="w-full mt-4"/>
                 </Link>
@@ -78,7 +76,7 @@ const Cart = () => {
                   </div>
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center rounded-lg bg-[#9BF6FF] px-5 py-2.5 text-sm font-medium text-black hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300   "
+                    className="flex w-full items-center justify-center rounded-lg bg-[#9BF6FF] px-5 py-2.5 text-sm font-medium text-black hover:bg-primary-800"
                   >
                     Apply Code
                   </button>

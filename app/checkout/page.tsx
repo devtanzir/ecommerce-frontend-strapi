@@ -3,15 +3,12 @@ import { getDayAfterOneWeek } from "@/lib/utils/utils";
 import useCheckout from "./hooks/useCheckout";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 
-
-
 const Checkout = () => {
   const { handleChange, handleSubmit, totalPrice, state,shipping,cost } = useCheckout();
 
   if (!cost) {
     return
   }
-
 
   return (
     <>

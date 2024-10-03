@@ -2,6 +2,7 @@
 import { NavItem } from "@/constants/header";
 import useToggler from "@/hooks/toggler";
 import Link from "next/link";
+import { FaBars } from "react-icons/fa";
 
 const MobileMenu = () => {
   const { handleToggle, open } = useToggler();
@@ -13,22 +14,9 @@ const MobileMenu = () => {
           className="inline-flex lg:hidden items-center justify-center hover:bg-gray-100 rounded-md  p-2 text-gray-900 "
         >
           <span className="sr-only">Open Menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
+          <span className="w-5 h-5">
+            <FaBars />
+          </span>
         </button>
         <div
           className={`${

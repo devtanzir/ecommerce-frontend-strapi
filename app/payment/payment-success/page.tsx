@@ -4,11 +4,14 @@ import { clearCart } from "@/lib/store/features/cart/cartSlice";
 import { resetOrder } from "@/lib/store/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import Link from "next/link";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const PaymentSuccess = () => {
   const order = useAppSelector((state) => state.order);
   const dispatch = useAppDispatch();
+  const [check, setCheck] = useState(true)
+
 
   const submitOrder = async () => {
     if (!order.username || order.products.length == 0) {
@@ -16,13 +19,13 @@ const PaymentSuccess = () => {
       return;
     }
 
-    if (!process.env.NEXT_PUBLIC_POST_ORDER) {
-      console.error("NEXT_PUBLIC_POST_ORDER environment variable is not defined.");
+    if (!process.env.NEXT_PUBLIC_ORDER) {
+      console.error("NEXT_PUBLIC_ORDER environment variable is not defined.");
       return;
     }
 
     try {
-      const response = await postData({ url: process.env.NEXT_PUBLIC_POST_ORDER, postData: order });
+      const response = await postData({ url: process.env.NEXT_PUBLIC_ORDER, postData: order });
       toast.success("Order Successful!",{
         position: "bottom-right",
         autoClose: 3000,
@@ -31,15 +34,15 @@ const PaymentSuccess = () => {
         pauseOnHover: true,
         draggable: true,
     })
-
-      dispatch(resetOrder());
       dispatch(clearCart());
     } catch (error) {
       console.error("Error posting order:", error);
     }
   };
-
+if (check) {
   submitOrder();
+  setCheck(false);
+}
   return (
     <>
       <section className="bg-white py-8 antialiased  md:py-16">
@@ -98,12 +101,14 @@ const PaymentSuccess = () => {
           <div className="flex items-center space-x-4">
             <Link
               href="/"
+              onClick={() => dispatch(resetOrder())}
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
             >
               Go Home
             </Link>
             <Link
               href="/products"
+              onClick={() => dispatch(resetOrder())}
               className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
             >
               Return to shopping

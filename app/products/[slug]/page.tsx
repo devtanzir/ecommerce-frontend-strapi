@@ -13,7 +13,7 @@ const Slug = async ({ params }: { params: Params }) => {
     url: `http://localhost:8080/api/products?filters[slug]=${slug}&populate=*`,
   });
   if (!slug) {
-    return <div>Loading...</div>;
+    return
   }
 
   const product = data.data[0].attributes;
@@ -50,7 +50,7 @@ const Slug = async ({ params }: { params: Params }) => {
                     (5.0)
                   </p>
                   <Link
-                    href="javascript:void(0)"
+                    href="#"
                     className="text-sm font-medium leading-none text-gray-900 underline hover:no-underline "
                   >
                     345 Reviews
@@ -62,6 +62,7 @@ const Slug = async ({ params }: { params: Params }) => {
                 <AddToCart
                   slug={product.slug}
                   title={product.title}
+                  strapiId={data.data[0].id}
                   image={productImage?.url}
                   availableQty={product.availableQty}
                   price={product.price}
