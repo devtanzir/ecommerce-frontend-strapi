@@ -3,6 +3,6 @@ export const initialData = {
     email: "",
     address: "",
     phone: "",
-    paymentMethod: "",
-    deliveryMethod: "",
+    paymentMethod: "credit-card",
+    deliveryMethod: "dhl",
   };

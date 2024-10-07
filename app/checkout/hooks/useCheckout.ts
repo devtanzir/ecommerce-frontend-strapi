@@ -1,6 +1,7 @@
 import { initialData } from "@/constants/checkout";
 import useTotalPrice from "@/hooks/totalPrice";
 import useGetUser from "@/hooks/useGetUser";
+import usePayment from "@/hooks/usePayment";
 import {
   addShippingCost,
   updateTotalCost,
@@ -13,10 +14,10 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 
-// Define a type for the delivery cost keys
+
 type DeliveryMethod = "pay-on-delivery" | "credit-card" | "dhl" | "fedex" | "express";
 
-// Initial delivery cost map
+
 const deliveryCostMap: Record<DeliveryMethod, number> = {
   "pay-on-delivery": 15,
   "credit-card": 0,
@@ -33,8 +34,9 @@ const useCheckout = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   const [state, setState] = useState({ ...initialData });
   const [userId, setUserId] = useState<number | null>(null);
+  const {handlePayment, loading, errorMessage} = usePayment()
 
-  // Fetch user ID on mount
+
   useEffect(() => {
     const fetchUserId = async () => {
       try {
@@ -60,7 +62,6 @@ const useCheckout = () => {
 
   // Calculate the final cost
   const cost = useMemo(() => totalPrice + shipping + totalPrice * 0.05, [totalPrice, shipping]);
-
   // Handle form input change
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -68,7 +69,7 @@ const useCheckout = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!userId) {
@@ -90,8 +91,8 @@ const useCheckout = () => {
         customerEmail: state.email,
         address: state.address,
         phone: state.phone,
-        paymentMethod: state.paymentMethod || "credit-card",
-        deliveryMethod: state.deliveryMethod || "dhl",
+        paymentMethod: state.paymentMethod,
+        deliveryMethod: state.deliveryMethod ,
         shippingCost: shipping,
       },
       orderId: generateOrderId(),
@@ -103,14 +104,24 @@ const useCheckout = () => {
     dispatch(updateUserInfo(state));
     dispatch(setOrder(orderData));
 
-    // Navigate to the next page based on the payment method
-    router.push(state.paymentMethod === "pay-on-delivery" ? "/payment/payment-success" : "/payment");
+    if (state.paymentMethod === "credit-card") {
+     const success = await handlePayment(cost)
+
+     if (success) {
+      router.push("/payment/payment-success");
+      return
+     }
+    }else{
+      router.push("/payment/payment-success");
+    }
+
+
 
     // Reset state
     setState(initialData);
   };
 
-  return { totalPrice, handleSubmit, handleChange, state, shipping, cost };
+  return { totalPrice, handleSubmit, handleChange, state, shipping, cost, loading, errorMessage };
 };
 
 export default useCheckout;

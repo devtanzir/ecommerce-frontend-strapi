@@ -2,9 +2,10 @@
 import { getDayAfterOneWeek } from "@/lib/utils/utils";
 import useCheckout from "./hooks/useCheckout";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
+import { CardElement } from "@stripe/react-stripe-js";
 
 const Checkout = () => {
-  const { handleChange, handleSubmit, totalPrice, state,shipping,cost } = useCheckout();
+  const { handleChange, handleSubmit, totalPrice, state,shipping,cost, loading, errorMessage } = useCheckout();
 
   if (!cost) {
     return
@@ -216,7 +217,7 @@ const Checkout = () => {
                     </div>
                   </div>
 
-                  <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4  ">
+                  <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4">
                     <div className="flex items-start">
                       <div className="flex h-5 items-center">
                         <input
@@ -263,14 +264,14 @@ const Checkout = () => {
                       <div className="ms-4 text-sm">
                         <label
                           htmlFor="express"
-                          className="font-medium leading-none text-gray-900 "
+                          className="font-medium leading-none text-gray-900"
                         >
                           {" "}
                           $49 - Express Delivery{" "}
                         </label>
                         <p
                           id="express-text"
-                          className="mt-1 text-xs font-normal text-gray-500 "
+                          className="mt-1 text-xs font-normal text-gray-500"
                         >
                           Get it today
                         </p>
@@ -283,6 +284,9 @@ const Checkout = () => {
 
             <div className="mt-6 w-full space-y-6 sm:mt-8 lg:mt-0 lg:max-w-xs xl:max-w-md">
               <div className="flow-root">
+                <div className={`border border-slate-300 p-5 rounded-lg ${state.paymentMethod !== "credit-card" ? "opacity-0 invisible transition duration-500 ease-in-out" : "opacity-100 visible transition duration-500 ease-in-out mb-5" }`}>
+                <CardElement />
+                </div>
                 <div className="-my-3 divide-y divide-gray-200">
                   <dl className="flex items-center justify-between gap-4 py-3">
                     <dt className="text-base font-normal text-gray-500 ">
@@ -324,14 +328,14 @@ const Checkout = () => {
                   </dl>
                 </div>
               </div>
-
               <div className="space-y-3">
                 <button
                   type="submit"
                   className="flex w-full items-center justify-center rounded-lg bg-[#9BF6FF] px-5 py-2.5 text-sm text-black font-semibold hover:bg-[#84E4ED] focus:outline-none focus:ring-4  focus:ring-blue-300"
                 >
-                  Proceed to Payment
+                  {loading ? "Processing..." : "Submit"}
                 </button>
+                {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
               </div>
             </div>
           </div>

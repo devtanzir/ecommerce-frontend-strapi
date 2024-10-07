@@ -1,4 +1,5 @@
-import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+"use client"
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Button from "./button";
 import { FormEvent, useState } from "react";
 import useTotalPrice from "@/hooks/totalPrice";
@@ -12,78 +13,72 @@ const CheckoutForm = () => {
     const [loading, setLoading] = useState(false);
     const totalPrice = useTotalPrice()
 
-    const handleError = (error: any) => {
-        setLoading(false);
-        setErrorMessage(error.message);
-    };
-
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
   
-        if (!stripe || !elements) {
-            // Stripe.js hasn't yet loaded.
-            return;
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+  
+      if (!stripe || !elements) {
+        console.error("Stripe or Elements not loaded");
+        return;
+      }
+  
+      // Get the CardElement
+      const cardElement = elements.getElement(CardElement);
+  
+      if (!cardElement) {
+        console.error("Card Element not found");
+        return;
+      }
+  
+      setLoading(true);
+  
+      try {
+        // Fetch the clientSecret from your server
+        const res = await fetch("/api/create-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: totalPrice }), // Amount in cents
+        });
+  
+        if (!res.ok) {
+          throw new Error("Failed to create payment intent");
         }
-
-        setLoading(true);
-
-        // Trigger form validation and wallet collection
-        const { error: submitError } = await elements.submit();
-        if (submitError) {
-            handleError(submitError);
-            return;
+  
+        const { clientSecret } = await res.json();
+  
+        // Confirm the payment using the card element
+        const result = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: cardElement,
+          },
+        });
+  
+        if (result.error) {
+          setErrorMessage(result.error.message || "Payment failed");
+        } else if (result.paymentIntent && result.paymentIntent.status === "succeeded") {
+          console.log("Payment successful!");
+          setErrorMessage(""); // Clear any existing errors
+          // Redirect or handle success case here
         }
-
-
-        try {
-            // Fetch the clientSecret from your server
-            const res = await fetch("/api/create-intent", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ amount: totalPrice }), // Amount in dollars
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed to create payment intent");
-            }
-
-            const { clientSecret } = await res.json();
-
-            // Confirm the payment with Stripe
-            const result = await stripe.confirmPayment({
-                clientSecret,
-                elements,
-                confirmParams: {
-                    return_url: "http://localhost:3000/payment/payment-success",
-                },
-            });
-
-            if (result.error) {
-                // Show error to your customer
-                handleError(result.error);
-            } else {
-                // Payment was successful, handle the success case here
-                console.log("Payment successful!");
-                setLoading(false); // Reset loading state
-            }
-        } catch (error: any) {
-            handleError(error);
-        }
+      } catch (error: any) {
+        setErrorMessage(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
-
-
   
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <PaymentElement />
-                <Button text={loading ? "Processing..." : "Submit"} className="w-full mt-7" />
-                {errorMessage && <div className="text-red-500 mt-2">{errorMessage}</div>}
-            </form>
+        
+        {/* <form onSubmit={handleSubmit}> */}
+        {/* Ensure CardElement is correctly rendered */}
+          <CardElement />
+          {/* <Button text={loading ? "Processing..." : "Submit"} className="w-full mt-7" />
+          {errorMessage && <div className="text-red-500 mt-2">{errorMessage}</div>} */}
+     {/* </form> */}
         </>
     );
-};
+  };
+  
 
 export default CheckoutForm;
