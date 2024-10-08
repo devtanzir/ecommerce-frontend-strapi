@@ -6,6 +6,7 @@ const CartIcon = (props:any) => (
     height={24}
     fill="none"
     aria-hidden="true"
+    viewBox="0 0 24 24"
     {...props}
   >
     <path
