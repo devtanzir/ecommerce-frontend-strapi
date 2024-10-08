@@ -29,7 +29,7 @@ const ProductItem = ({ product }: { product: Product }) => {
 
             <div className="flex items-center justify-end gap-1">
               <ViewProduct
-                image={`${productImage?.url}`}
+                product={product}
               />
 
               <AddToCart

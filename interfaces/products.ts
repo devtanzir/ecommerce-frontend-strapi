@@ -40,8 +40,34 @@ export interface Product {
           };
         };
       };
+      categories?: {
+        data: ProductCategory[];
+      };
+      brands?: {
+        data: ProductBrand[];
+      };
     };
   }
+
+  interface ProductCategory {
+    id: number;
+    attributes: {
+      title: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  }
+  interface ProductBrand {
+    id: number;
+    attributes: {
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  }
+  
   
   export interface ImageFormat {
     ext: string;
