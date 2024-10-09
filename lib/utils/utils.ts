@@ -44,3 +44,11 @@ export const generateOrderId = () => {
     const randomNum = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit number
     return `ORD-${timestamp}-${randomNum}`;
   };
+
+export const validateBDPhoneNumber = (phone: string): boolean => {
+    // Regular expression to match Bangladeshi phone numbers
+    const bdPhoneNumberRegex = /^(?:\+8801|01)[3-9]\d{8}$/;
+  
+    // Test the phone number against the regex pattern
+    return bdPhoneNumberRegex.test(phone);
+  };
