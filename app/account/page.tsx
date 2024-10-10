@@ -8,7 +8,7 @@ import { GiReturnArrow } from "react-icons/gi";
 import Truck from "@/public/icons/truck";
 import PhoneNumber from "./phone";
 import UserAddress from "./address";
-import Eye from "@/public/icons/eye";
+import OrderDetails from "./single-view";
 
 const Profile = () => {
 
@@ -17,8 +17,6 @@ const {userInfo,user, updateDone} = useCustomer()
 if (!userInfo || !user) {
     return <Loader/>
 }
-
-console.log(userInfo[0]);
 
 const address = userInfo[0]?.attributes?.address?.data?.attributes;
 
@@ -163,9 +161,7 @@ const address = userInfo[0]?.attributes?.address?.data?.attributes;
                   Details:
                 </dt>
                 <dd className="me-2 mt-1.5 inline-flex shrink-0 items-center px-2.5 py-0.5">
-                  <button>
-                    <Eye/>
-                  </button>
+                  <OrderDetails order={order}/>
                 </dd>
               </dl>
             </div>

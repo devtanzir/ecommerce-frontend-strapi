@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.popover-content-scroll::-webkit-scrollbar {
+    width: 7px;
+    display: block;
+  }
+  .popover-content-scroll::-webkit-scrollbar-thumb {
+    background-color: #CED0D4;
+    border-radius: 5px; 
+    cursor: pointer;
+    visibility: hidden;
+  }
+  .popover-content-scroll:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+  }
+  .popover-content-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .popover-content-scroll::-webkit-scrollbar-button {
+    display: none;
+  }
