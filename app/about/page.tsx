@@ -15,7 +15,7 @@ const About = () => {
           <div className="font-light text-gray-500 sm:text-lg">
             
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
-              We didn't reinvent the wheel
+              We didn&apos;t reinvent the wheel
             </h2>
             <p className="mb-4">
               We are strategists, designers and developers. Innovators and
