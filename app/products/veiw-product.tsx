@@ -3,6 +3,7 @@ import Close from "@/public/icons/close";
 import Eye from "@/public/icons/eye";
 import useToggler from "@/hooks/toggler";
 import { Product } from "@/interfaces/products";
+import Image from "next/image";
 
 const ViewProduct = ({product} : {product: Product}) => {
   const { handleToggle, open } = useToggler();
@@ -23,7 +24,7 @@ const ViewProduct = ({product} : {product: Product}) => {
             <Close onClick={handleToggle} className="mx-auto mr-1 mt-1 w-10 cursor-pointer fill-black"/>
             <div className="flex justify-center items-center flex-col gap-5">
               <div className="h-60 p-5 pt-0">
-            <img className={`inline-block ${productImage?.width > productImage?.height ? "w-full" : "h-56"}`} src={productImage?.url} alt="product image" />
+            <Image width={productImage?.width} height={productImage?.height} className={`inline-block ${productImage?.width > productImage?.height ? "w-full h-auto" : "h-56 w-auto"}`} src={productImage?.url} alt="product image" />
               </div>
             <div className="px-5">
                 <h4 className="text-lg text-black font-semibold mb-1">{product.attributes.title}</h4>

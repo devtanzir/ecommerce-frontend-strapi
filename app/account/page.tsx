@@ -9,6 +9,7 @@ import Truck from "@/public/icons/truck";
 import PhoneNumber from "./phone";
 import UserAddress from "./address";
 import OrderDetails from "./single-view";
+import Image from "next/image";
 
 const Profile = () => {
 
@@ -67,8 +68,11 @@ const address = userInfo[0]?.attributes?.address?.data?.attributes;
             <div className="mb-4 grid gap-4 sm:grid-cols-2 sm:gap-8 lg:gap-16">
               <div className="space-y-4">
                 <div className="flex space-x-4">
-                  <img
+                  <Image
                     className="h-16 w-16 rounded-lg"
+                    width={400}
+                    height={400}
+                    loading="lazy"
                     src={user?.imageUrl}
                     alt={user?.fullName ?? "user avatar"}
                   />

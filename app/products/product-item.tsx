@@ -5,6 +5,7 @@ import { Product } from "@/interfaces/products";
 import Link from "next/link";
 import AddToCart from "../../components/shared/addToCart";
 import ViewProduct from "./veiw-product";
+import Image from "next/image";
 const ProductItem = ({ product }: { product: Product }) => {
 
   const productImage = product.attributes.image.data.attributes.formats.small
@@ -13,10 +14,13 @@ const ProductItem = ({ product }: { product: Product }) => {
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm  ">
         <div className="h-56 w-full flex justify-center items-center">
           <Link href={`/products/${product.attributes.slug}`}>
-            <img
-              className={`inline-block ${productImage?.width > productImage?.height ? "w-full" : "h-56"}`}
-              src={`${productImage?.url}`}
-              alt="product-image"
+            <Image
+            width={productImage.width}
+            height={productImage.height}
+            loading="lazy"
+            className={`inline-block ${productImage?.width > productImage?.height ? "w-full h-auto" : "h-56 w-auto"}`}
+            src={`${productImage?.url}`}
+            alt="product-image"
             />
           </Link>
         </div>

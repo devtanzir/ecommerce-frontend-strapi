@@ -5,6 +5,7 @@ import Plus from "@/public/icons/plus";
 import { addQty, removeQty } from "@/lib/store/features/cart/cartSlice";
 import Link from "next/link";
 import useCart from "@/hooks/useCart";
+import Image from "next/image";
 
 const CartItem = () => {
   const {cartItems,handleDelete, dispatch} = useCart()
@@ -17,8 +18,11 @@ const CartItem = () => {
         >
           <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
             <div className="shrink-0 md:order-1 h-20 w-20 text-center flex justify-center items-center">
-              <img
-                className={` ${item.width > item.height ? "w-20" : "h-20"} inline-block`}
+              <Image
+              width={item.width}
+              height={item.height}
+              loading="lazy"
+                className={` ${item.width > item.height ? "w-20 h-auto" : "h-20 w-auto"} inline-block`}
                 src={item.image}
                 alt={item.slug}
               />

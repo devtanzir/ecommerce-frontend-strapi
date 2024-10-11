@@ -7,15 +7,20 @@ import { getData } from "@/lib/getData";
 import { Product } from "@/interfaces/products";
 import ProductItem from "./product-item";
 import { createId } from "@/lib/utils/utils";
+import ProductsLoader from "./loading";
+import NoDataFound from "@/components/animation/no-data";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [brands, setBrands] = useState<any[]>([]);
+  const [loader, setLoader] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoader(true);
     const fetchProducts = async () => {
+
       const { data } = await getData({
         url: process.env.NEXT_PUBLIC_GET_PRODUCTS ?? "",
       });
@@ -32,6 +37,7 @@ const Products = () => {
       });
       setCategories(categoriesData);
       setBrands(brandsData);
+      setLoader(false);
     };
 
     fetchProducts();
@@ -65,6 +71,10 @@ const Products = () => {
     setFilteredProducts(filtered);
   };
 
+  if (loader) {
+    return <ProductsLoader/>
+  }
+
   return (
     <>
       <BreadCrumbComponents />
@@ -89,26 +99,7 @@ const Products = () => {
               ? filteredProducts?.map((product: Product) => (
                   <ProductItem key={createId()} product={product} />
                 ))
-              : [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                  <div
-                    key={item}
-                    className=" p-6 rounded-md bg-white shadow-md mx-auto max-w-fit"
-                  >
-                    <div className="animate-pulse">
-                      {/* Product Image Skeleton */}
-                      <div className="w-[258px] lg:h-56 md:h-52 h-48 rounded-lg bg-gray-300 mb-6"></div>
-                      {/* Product Title Skeleton */}
-                      <div className="w-[258px] h-9 rounded-lg bg-gray-300 mb-4"></div>
-                      {/* product heading skeleton */}
-                      <div className="w-[258px] h-[22.5px] rounded-lg bg-gray-300 mb-2"></div>
-                      <div className="w-[258px] h-[22.5px] rounded-lg bg-gray-300 mb-4"></div>
-                      {/* Product Description Skeleton */}
-                      <div className="w-[175px] h-5 rounded-lg bg-gray-300 mb-4"></div>
-                      <div className="w-[258px] h-5 rounded-lg bg-gray-300 mb-4"></div>
-                      <div className="w-[100px] h-[25px] rounded-lg bg-gray-300 mb-4"></div>
-                    </div>
-                  </div>
-                ))}
+              : <NoDataFound/>}
           </div>
         </div>
       </section>

@@ -5,6 +5,7 @@ import AddToCart from "@/components/shared/addToCart";
 import Link from "next/link";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
 import Star from "@/public/icons/star";
+import Image from "next/image";
 
 const Slug = async ({ params }: { params: Params }) => {
   const { slug } = params;
@@ -26,7 +27,7 @@ const Slug = async ({ params }: { params: Params }) => {
         <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
-              <img className="w-full" src={productImage?.url} alt={product.slug} />
+              <Image width={productImage?.width} loading="lazy" height={productImage?.height} className="w-full" src={productImage?.url} alt={product.slug} />
             </div>
 
             <div className="mt-6 sm:mt-8 lg:mt-0">
