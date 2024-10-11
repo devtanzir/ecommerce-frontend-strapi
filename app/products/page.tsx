@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Filter from "./filter";
 import BreadCrumbComponents from "@/components/shared/breadCrumbComponents";
@@ -22,7 +21,7 @@ const Products = () => {
     const fetchProducts = async () => {
 
       const { data } = await getData({
-        url: process.env.NEXT_PUBLIC_GET_PRODUCTS ?? "",
+        url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/products?populate=*`,
       });
       setProducts(data);
       setFilteredProducts(data);
@@ -30,10 +29,10 @@ const Products = () => {
 
     const fetchFilters = async () => {
       const { data: categoriesData } = await getData({
-        url: process.env.NEXT_PUBLIC_CATEGORIES ?? "",
+        url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/categories`,
       });
       const { data: brandsData } = await getData({
-        url: process.env.NEXT_PUBLIC_BRANDS ?? "",
+        url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/brands`,
       });
       setCategories(categoriesData);
       setBrands(brandsData);

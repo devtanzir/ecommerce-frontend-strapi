@@ -17,12 +17,12 @@ const AddToCart = ({
 }: {
   slug: string;
   price: number;
-  strapiId: number;  // Replace with your strapi id field name
+  strapiId: number; 
   title: string;
   image: string;
   availableQty: number;
   width: number;
-  height: number;  // Adjust size as needed to fit your design requirements. For example, h-7 w-7 for a 7x7 pixel icon.
+  height: number;  
 }) => {
   const dispatch = useAppDispatch();
   const handleCart = (item: CartItem) => {

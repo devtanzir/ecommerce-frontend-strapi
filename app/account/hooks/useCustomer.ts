@@ -12,7 +12,7 @@ const useCustomer = () => {
   const fetchCustomerInfo = async () => {
     try {
       const data = await getData({
-        url: `http://localhost:8080/api/customers?filters[email][$eq]=${user?.primaryEmailAddress?.emailAddress}&populate=*`,
+        url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/customers?filters[email][$eq]=${user?.primaryEmailAddress?.emailAddress}&populate=*`,
       });
       setUserInfo(data.data);
     } catch (error) {

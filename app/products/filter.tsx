@@ -1,19 +1,11 @@
 "use client";
 import useToggler from "@/hooks/toggler";
+import { FilterProps } from "@/interfaces/filter";
 import ChevronDown from "@/public/icons/chevron-down";
 import Close from "@/public/icons/close";
 import FilterIcon from "@/public/icons/filter";
 import { useState, FC } from "react";
 
-interface FilterProps {
-  onApplyFilters: (filters: {
-    categories: string[];
-    brands: string[];
-    priceRange: [number, number];
-  }) => void;
-  categories: { id: number; attributes: { title: string } }[];
-  brands: { id: number; attributes: { name: string } }[];
-}
 
 const Filter: FC<FilterProps> = ({ onApplyFilters, categories, brands }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);

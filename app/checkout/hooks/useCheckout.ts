@@ -10,12 +10,10 @@ import {
 import { setOrder } from "@/lib/store/features/order/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { generateOrderId } from "@/lib/utils/utils";
+import { DeliveryMethod } from "@/types/checkout";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-
-
-type DeliveryMethod = "pay-on-delivery" | "credit-card" | "dhl" | "fedex" | "express";
 
 
 const deliveryCostMap: Record<DeliveryMethod, number> = {

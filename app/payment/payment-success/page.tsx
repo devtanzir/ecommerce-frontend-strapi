@@ -19,13 +19,13 @@ const PaymentSuccess = () => {
       return;
     }
 
-    if (!process.env.NEXT_PUBLIC_ORDER) {
-      console.error("NEXT_PUBLIC_ORDER environment variable is not defined.");
+    if (!process.env.NEXT_PUBLIC_ROOT_LINK) {
+      console.error("NEXT_PUBLIC_ROOT_LINK environment variable is not defined.");
       return;
     }
 
     try {
-      const response = await postData({ url: process.env.NEXT_PUBLIC_ORDER, postData: order });
+      const response = await postData({ url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/orders`, postData: order });
       toast.success("Order Successful!",{
         position: "bottom-right",
         autoClose: 3000,

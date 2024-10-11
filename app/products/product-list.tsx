@@ -4,7 +4,7 @@ import { Product } from "@/interfaces/products";
 import { getData } from "@/lib/getData";
 
 const ProductList = async () => {
-    const {data} = await getData({url: process.env.NEXT_GET_PRODUCTS ?? ""});
+    const {data} = await getData({url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/products?populate=*`});
     
 
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Hero = () => {
     return (
@@ -14,7 +15,7 @@ const Hero = () => {
         </Link>
       </div>
       <div className="hidden md:col-span-5 md:mt-0 md:flex">
-        <img src="https://static.vecteezy.com/system/resources/previews/005/638/077/large_2x/illustration-isometric-concept-shopping-note-in-e-commerce-store-free-vector.jpg" alt="shopping illustration" />
+        <Image width={1000} height={1000} src="https://static.vecteezy.com/system/resources/previews/005/638/077/large_2x/illustration-isometric-concept-shopping-note-in-e-commerce-store-free-vector.jpg" alt="shopping illustration" />
       </div>
     </div>
   </section>

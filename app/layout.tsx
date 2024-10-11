@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "ShopBD | Tanzir Ibne Ali",
   description: "ShopBD - The best place to find top-quality products",
   icons: {
-    icon: '/favicon.svg', 
+    icon: '/logoIcon.ico', 
   },
   openGraph: {
     title: 'ShopBD | Tanzir Ibne Ali',

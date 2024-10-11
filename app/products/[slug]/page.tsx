@@ -11,7 +11,7 @@ const Slug = async ({ params }: { params: Params }) => {
   const { slug } = params;
 
   const data = await getData({
-    url: `http://localhost:8080/api/products?filters[slug]=${slug}&populate=*`,
+    url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/products?filters[slug]=${slug}&populate=*`,
   });
   if (!slug) {
     return

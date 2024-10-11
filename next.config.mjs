@@ -23,6 +23,16 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "static.vecteezy.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "flowbite.s3.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
 };

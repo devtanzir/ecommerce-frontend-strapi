@@ -20,16 +20,16 @@ const useCreateUser = () => {
 
   const getCustomer = async () => {
     try {
-      if (!process.env.NEXT_PUBLIC_CUSTOMER) {
+      if (!process.env.NEXT_PUBLIC_ROOT_LINK) {
         console.error(
-          "NEXT_PUBLIC_CUSTOMER environment variable is not defined."
+          "NEXT_PUBLIC_ROOT_LINK environment variable is not defined."
         );
         return;
       }
    
       // getting all user information from database
-      const res = await getData({ url: process.env.NEXT_PUBLIC_CUSTOMER });
-
+      const res = await getData({ url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/customers`
+ });
       if (res?.data?.length > 0) {
         // if there is any user
         const emails = res.data.map((item: any) => item.attributes.email);
@@ -57,9 +57,9 @@ const useCreateUser = () => {
       return;
     }
 
-    if (!process.env.NEXT_PUBLIC_CUSTOMER) {
+    if (!process.env.NEXT_PUBLIC_ROOT_LINK) {
       console.error(
-        "NEXT_PUBLIC_CUSTOMER environment variable is not defined."
+        "NEXT_PUBLIC_ROOT_LINK environment variable is not defined."
       );
       return;
     }
@@ -71,7 +71,7 @@ const useCreateUser = () => {
     try {
       // creating a new user in the database with user data
       const response = await postData({
-        url: process.env.NEXT_PUBLIC_CUSTOMER,
+        url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/customers`,
         postData: userData,
       });
       toast.success("Account Created Successfully!",{

@@ -1,0 +1,1 @@
+export type DeliveryMethod = "pay-on-delivery" | "credit-card" | "dhl" | "fedex" | "express";

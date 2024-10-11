@@ -10,6 +10,7 @@ import PhoneNumber from "./phone";
 import UserAddress from "./address";
 import OrderDetails from "./single-view";
 import Image from "next/image";
+import { createId } from "@/lib/utils/utils";
 
 const Profile = () => {
 
@@ -122,7 +123,7 @@ const address = userInfo[0]?.attributes?.address?.data?.attributes;
               Latest orders
             </h3>
             {userInfo[0].attributes.orders.data.map((order: any) => (
-              <div className="flex flex-wrap items-center gap-y-4 border-b border-gray-200 pb-4  md:pb-5">
+              <div key={createId()} className="flex flex-wrap items-center gap-y-4 border-b border-gray-200 pb-4  md:pb-5">
               <dl className="w-full sm:w-64">
                 <dt className="text-base font-medium text-gray-500 ">
                   Order ID:
