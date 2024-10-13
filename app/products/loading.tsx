@@ -14,7 +14,7 @@ const ProductsLoader = () => {
                 Products - ShopBD
               </h2>
               <div className="flex items-center space-x-4">
-                <span className='bg-gray-300 w-[111px] h-[38px] animate-pulse'></span>
+                <span className='bg-gray-300 w-full sm:w-[111px] h-[38px] animate-pulse'></span>
               </div>
             </div>
   

@@ -21,7 +21,7 @@ const MobileMenu = () => {
         <div
           className={`${
             !open && "hidden"
-          } absolute right-0 w-[287px] bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 mt-4`}
+          } absolute right-0 w-[287px] z-50 bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 mt-4`}
         >
           <ul className="text-gray-900  text-sm font-medium  space-y-3">
             {NavItem.map((item) => (
