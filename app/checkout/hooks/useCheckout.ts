@@ -1,7 +1,7 @@
 import { initialData } from "@/constants/checkout";
 import useTotalPrice from "@/hooks/totalPrice";
-import useGetUser from "@/hooks/useGetUser";
 import usePayment from "@/hooks/usePayment";
+import { getData } from "@/lib/getData";
 import {
   addShippingCost,
   updateTotalCost,
@@ -36,18 +36,27 @@ const useCheckout = () => {
 
 
   useEffect(() => {
-    const fetchUserId = async () => {
+    ;(async () => {
       try {
-        const data = await useGetUser();
-        if (data) {
-          const matchedUser = data.find((item: any) => item.attributes.email === user?.primaryEmailAddress?.emailAddress);
+        if (!process.env.NEXT_PUBLIC_ROOT_LINK) {
+          console.error(
+            "NEXT_PUBLIC_ROOT_LINK environment variable is not defined."
+          );
+          return;
+        }
+     
+        // getting all user information from database
+        const res = await getData({ url: `${process.env.NEXT_PUBLIC_ROOT_LINK}/api/customers` });
+  
+        if (res.data) {
+          const matchedUser = res.data.find((item: any) => item.attributes.email === user?.primaryEmailAddress?.emailAddress);
           if (matchedUser) setUserId(matchedUser.id);
         }
       } catch (error) {
         console.error("Failed to fetch user", error);
       }
-    };
-    fetchUserId();
+    })();
+    // fetchUserId();
   }, [user]);
 
   // Calculate shipping cost based on selected payment and delivery methods
